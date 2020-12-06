@@ -1,0 +1,292 @@
+@mixin button-std-colour($colour) {
+  background-color: $colour;
+  outline: solid 1px $colour;
+  border: solid 2px $colour;
+}
+
+@mixin button-std($colour, $colour-hover) {
+
+  & {
+    @include button-std-colour($colour);
+  }
+
+  &:hover {
+    @include button-std-colour($colour-hover);
+  }
+}
+
+@mixin button-border($colour, $colour-hover) {
+
+  & {
+    border: solid 3px $colour;
+    color: $colour;
+  }
+
+  &:focus {
+    background-color: $colour;
+    color: $white;
+  }
+
+  &:focus:hover {
+    background-color: $colour-hover;
+  }
+}
+
+button {
+  @include button-std-colour($primary);
+  @include transition(0.2s);
+  cursor: pointer;
+  display: flex;
+  width: 150px;
+  height: 50px;
+  outline-offset: -1px;
+  color: $white;
+  font-family: $button-font;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  padding: 0;
+}
+
+.button-sm {
+  font-size: 9pt;
+  width: 100px;
+  height: 33px;
+
+  .button-arrow-icon {
+    margin-right: -12px;
+  }
+}
+
+.button-lg {
+  font-size: 16pt;
+  width: 200px;
+  height: 67px;
+
+  .button-arrow-icon {
+    margin-right: -26px;
+  }
+}
+
+button:hover.button-sm {
+  .button-arrow-icon {
+    margin-left: 12px;
+  }
+}
+
+button:hover.button-lg {
+  .button-arrow-icon {
+    margin-left: 26px;
+  }
+}
+
+.button-arrow-icon {
+  @include transition(0.4s);
+  opacity: 0;
+  display: flex;
+  margin: 0 -20px 0 0;
+}
+
+button:hover .button-arrow-icon {
+  opacity: 1;
+  margin-left: 20px;
+}
+
+.button-std:hover, .button-icon:hover {
+  @include button-std-colour($primary-light);
+}
+
+.button-std:focus, .button-icon:focus {
+  border: solid 2px $white !important;
+}
+
+.button-std.button-alertgood {
+  @include button-std($alertgood, $alertgood-light);
+}
+
+.button-std.button-alertbad {
+  @include button-std($alertbad, $alertbad-light);
+}
+
+.button-std.button-accent {
+  @include button-std($accent, $accent-light);
+}
+
+.button-std.button-blue {
+  @include button-std($blue, $blue-light);
+}
+
+.button-std.button-green {
+  @include button-std($green, $green-light);
+}
+
+.button-std.button-orange {
+  @include button-std($orange, $orange-light);
+  color: $black;
+}
+
+.button-std.button-red {
+  @include button-std($red, $red-light);
+}
+
+.button-border {
+  @include button-border($primary, $primary-light);
+  background-color: $white;
+  outline: none;
+}
+
+.button-border.button-sm {
+  width: 100px;
+  height: 33px;
+}
+
+.button-border:hover {
+  background-color: rgb(233, 233, 233);
+}
+
+.button-border.button-blue {
+  @include button-border($blue, $blue-light);
+}
+
+.button-border.button-alertgood {
+  @include button-border($alertgood, $alertgood-light);
+}
+
+.button-border.button-alertbad {
+  @include button-border($alertbad, $alertbad-light);
+}
+
+.button-border.button-accent {
+  @include button-border($accent, $accent-light);
+}
+
+.button-underline {
+  width: auto;
+  height: 30px;
+  padding: 0 5px;
+  background: none;
+  border: none;
+  outline: none;
+  color: $primary;
+  position: relative;
+}
+
+.button-underline::after {
+  @include transition(0.3s);
+  content: '';
+  width: 85%;
+  border: 2px solid $primary;
+  position: absolute;
+  top: 90%;
+  transform: scaleX(0);
+}
+
+.button-underline:hover::after {
+  transform: scaleX(1);
+}
+
+.button-underline.button-accent::after {
+  border: 2px solid $accent;
+}
+
+.button-underline.button-alertgood::after {
+  border: 2px solid $alertgood;
+}
+
+.button-underline.button-alertbad::after {
+  border: 2px solid $alertbad;
+}
+
+.button-link {
+  width: auto;
+  height: auto;
+  font-weight: 400;
+  font-size: 11pt;
+  background: none;
+  border: none;
+  outline: none;
+  color: $primary;
+}
+
+.button-link:hover {
+  text-decoration: underline;
+}
+
+.button-link.button-accent {
+  color: $accent;
+}
+
+.button-link.button-alertgood {
+  color: $alertgood;
+}
+
+.button-link.button-alertbad {
+  color: $alertbad;
+}
+
+.button-icon, .button-icon-only {
+  .button-content {
+    display: flex;
+  }
+
+  width: 40px;
+  height: 40px;
+}
+
+.button-icon.button-sm, .button-icon-only.button-sm {
+  .button-content svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  width: 30px;
+  height: 30px;
+}
+
+.button-icon.button-accent {
+  @include button-std($accent, $accent-light);
+}
+
+.button-icon.button-alertgood {
+  @include button-std($alertgood, $alertgood-light);
+}
+
+.button-icon.button-alertbad {
+  @include button-std($alertbad, $alertbad-light);
+}
+
+.button-icon-only {
+  color: $primary;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.button-icon-only:hover {
+  color: $primary-light;
+}
+
+.button-icon-only.button-accent {
+  color: $accent;
+}
+
+.button-icon-only.button-accent:hover {
+  color: $accent-light;
+}
+
+.button-icon-only.button-alertgood {
+  color: $alertgood;
+}
+
+.button-icon-only.button-alertgood:hover {
+  color: $alertgood-light;
+}
+
+.button-icon-only.button-alertbad {
+  color: $alertbad;
+}
+
+.button-icon-only.button-alertbad:hover {
+  color: $alertbad-light;
+}

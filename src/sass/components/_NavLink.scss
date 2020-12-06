@@ -1,0 +1,13 @@
+.navlink {
+  @include transition(0.2s);
+  font-family: $button-font;
+  font-size: 10pt;
+  color: $primary;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navlink:hover {
+  text-decoration: underline dashed;
+}

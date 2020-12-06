@@ -1,0 +1,19 @@
+.reader {
+  padding: 2vw 2vw;
+  top: $navbar-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  position: absolute;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+
+.reader-wide {
+  padding: 2vw $reader-wide;
+}
+
+.reader-narrow {
+  padding: 2vw $reader-narrow;
+}

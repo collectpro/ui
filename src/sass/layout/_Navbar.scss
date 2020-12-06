@@ -1,0 +1,72 @@
+@mixin navbar-section($justify) {
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  padding: 0 5px;
+  min-width: max-content;
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  top: 0;
+  height: $navbar-height;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  z-index: 100;
+
+  .navbar-brand {
+    @include navbar-section(right);
+  }
+
+  .navbar-left {
+    @include navbar-section(left);
+    flex-grow: 1;
+  }
+
+  .navbar-right {
+    @include navbar-section(right);
+  }
+}
+
+.navbar-narrow {
+
+  .navbar-brand {
+    width: calc(#{$reader-narrow} - 10px);
+  }
+
+  .navbar-right {
+    padding-right: calc(#{$reader-narrow} + 5px);
+  }
+}
+
+.navbar-wide {
+
+  .navbar-brand {
+    width: calc(#{$reader-wide} - 10px);
+  }
+
+  .navbar-right {
+    padding-right: calc(#{$reader-wide} + 5px);
+  }
+}
+
+.navbar::after {
+  content: '';
+  width: 100vw;
+  border-bottom: 1px solid $primary;
+  position: absolute;
+  top: 99%;
+}
+
+.navbar-narrow::after {
+  width: 100vw - ($reader-narrow * 2);
+  left: $reader-narrow;
+}
+
+.navbar-wide::after {
+  width: 100vw - ($reader-wide * 2);
+  left: $reader-wide;
+}

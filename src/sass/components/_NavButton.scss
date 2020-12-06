@@ -1,0 +1,80 @@
+@mixin navbutton($colour) {
+  & {
+    color: $colour;
+  }
+
+  &:hover {
+    background: $secondary;
+  }
+
+  &:focus {
+    background: $colour;
+    color: $white;
+  }
+}
+
+@mixin navbutton-icon($_primary) {
+  & {
+    color: $_primary;
+  }
+
+  &:focus {
+    background: $_primary;
+    color: $white;
+  }
+
+  &:focus:hover {
+    background: lighten($_primary, 20);
+  }
+}
+
+.navbutton {
+  @include navbutton($primary);
+  width: auto;
+  height: 30px;
+  font-size: 10pt;
+  padding: 0 8px;
+  margin: 0 3px;
+  color: $primary;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.navbutton-icon {
+  @include navbutton-icon($primary);
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  font-weight: 300;
+
+  svg {
+    @include transition(0.2s);
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.navbutton-icon.navbutton-accent {
+  @include navbutton-icon($accent);
+}
+
+.navbutton-icon.navbutton-alertgood {
+  @include navbutton-icon($alertgood);
+}
+
+.navbutton.navbutton-icon.navbutton-alertbad {
+  @include navbutton-icon($alertbad);
+}
+
+.navbutton.navbutton-accent {
+  @include navbutton($accent);
+}
+
+.navbutton.navbutton-alertgood {
+  @include navbutton($alertgood);
+}
+
+.navbutton.navbutton-alertbad {
+  @include navbutton($alertbad);
+}
