@@ -1,2 +1,2 @@
-# ui
-UI kit developed for the Collect Pro app.
+# Collect Pro UI kit
+A React UI kit. Very much a work in progress.
